@@ -2,9 +2,12 @@
 
 ![Use Case.png](Use%20Case.png)
 
-API 명세서
+API Statement
 
-Method | URL | Request  | Response
-GET | ----- |----------| -----
-내용을 | 추가할 | 수있다      | 수있다
-여기서도 | *강조 기능이* | **작동한다** | **작동한다**
+| Method | URL           | Request                                                                                                          | Response |   
+|--------|---------------|------------------------------------------------------------------------------------------------------------------|----------|
+| GET    | /api/posts    |                                                                                                                  |          |   
+| GET    | /api/post     |                                                                                                                  |          |   
+| POST   | /api/post{id} | {<br/>"title" : "title",<br/> "author" : "author",<br/> "password" : "password",<br/> "content", "content"<br/>} |          |   
+| PUT    | /api/post{id} |                                                                                                                  |          |  
+| DELETE | /api/post{id} |                                                                                                                  |          |  
