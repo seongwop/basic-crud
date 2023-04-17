@@ -2,6 +2,7 @@ package com.example.postcrud.service;
 
 
 import com.example.postcrud.dto.PostRequestDto;
+import com.example.postcrud.dto.PostResponseDto;
 import com.example.postcrud.entity.Post;
 import com.example.postcrud.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -18,34 +20,37 @@ public class PostService {
     private final PostRepository postRepository;
 
     @Transactional(readOnly = true)
-    public List<Post> getPosts() {
-        return postRepository.findAllByOrderByCreatedAtDesc();
-
+    public List<PostResponseDto> getPosts() {
+        return postRepository.findAllByOrderByCreatedAtDesc()
+                .stream()
+                .map(PostResponseDto::new)
+                .collect(Collectors.toList());
     }
 
     @Transactional
-    public Post createPost(PostRequestDto requestDto) {
+    public PostResponseDto createPost(PostRequestDto requestDto) {
         Post post = new Post(requestDto);
         postRepository.save(post);
-        return post;
+        return new PostResponseDto(post);
     }
 
     @Transactional(readOnly = true)
-    public Post getPost(Long id) {
-        return postRepository.findById(id).orElseThrow(
+    public PostResponseDto getPost(Long id) {
+        Post post = postRepository.findById(id).orElseThrow(
                 () -> new IllegalArgumentException("아이디가 존재하지 않습니다.")
         );
+        return new PostResponseDto(post);
     }
 
     @Transactional
-    public Long updatePost(Long id, PostRequestDto requestDto) {
+    public PostResponseDto updatePost(Long id, PostRequestDto requestDto) {
         Post post = postRepository.findById(id).orElseThrow(
                 () -> new IllegalArgumentException("아이디가 존재하지 않습니다.")
         );
         if (post.getPassword().equals(requestDto.getPassword())) {
             post.update(requestDto);
         }
-        return post.getId();
+        return new PostResponseDto(post);
     }
 
     @Transactional

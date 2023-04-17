@@ -2,7 +2,7 @@ package com.example.postcrud.controller;
 
 
 import com.example.postcrud.dto.PostRequestDto;
-import com.example.postcrud.entity.Post;
+import com.example.postcrud.dto.PostResponseDto;
 import com.example.postcrud.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -16,29 +16,28 @@ public class PostController {
     private final PostService postService;
 
     @GetMapping("api/posts")
-    public List<Post> getPosts() {
+    public List<PostResponseDto> getPosts() {
         return postService.getPosts();
     }
 
     @PostMapping("api/post")
-    public Post createPost(@RequestBody PostRequestDto postRequestDto) {
-
-        return postService.createPost(postRequestDto);
+    public PostResponseDto createPost(@RequestBody PostRequestDto requestDto) {
+        return postService.createPost(requestDto);
     }
 
     @GetMapping("api/post/{id}")
-    public Post getPost(@PathVariable Long id) {
+    public PostResponseDto getPost(@PathVariable Long id) {
         return postService.getPost(id);
     }
 
     @PutMapping("api/post/{id}")
-    public Long updatePost(@PathVariable Long id, @RequestBody PostRequestDto postRequestDto) {
-        return postService.updatePost(id, postRequestDto);
+    public PostResponseDto updatePost(@PathVariable Long id, @RequestBody PostRequestDto requestDto) {
+        return postService.updatePost(id, requestDto);
     }
 
     @DeleteMapping("api/post/{id}")
-    public int deletePost(@PathVariable Long id, @RequestBody PostRequestDto postRequestDto) {
-        return postService.deletePost(id, postRequestDto);
+    public int deletePost(@PathVariable Long id, @RequestBody PostRequestDto requestDto) {
+        return postService.deletePost(id, requestDto);
     }
 
 }
