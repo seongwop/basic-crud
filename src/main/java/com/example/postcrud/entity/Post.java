@@ -28,7 +28,6 @@ public class Post extends TimeStamped {
     @Column(nullable = false)
     private String content;
 
-
     public Post(PostRequestDto requestDto) {
         this.title = requestDto.getTitle();
         this.author = requestDto.getAuthor();
