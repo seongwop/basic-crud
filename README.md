@@ -1,7 +1,7 @@
 # basic-crud
 
 - Use Case
-- 
+
 ![Use Case.png](Use%20Case.png)
 
 - API Statement
