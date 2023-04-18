@@ -14,7 +14,7 @@
 | PUT    | /api/post{id} | {<br/>"title" : "title",<br/> "author" : "author",<br/> "password" : "password",<br/> "content", "content"<br/>} | {<br/>"id" : "1",<br/>"title" : "title1",<br/> "author" : "author1",<br/> "content" : "content1",<br/> "createdAt" : "2023-04-18T00:20:15.281109",<br/>"modifiedAt" : "2023-04-18T00:21:26.485111"}<br/>}                                                                                                                                                                                                                                  |  
 | DELETE | /api/post{id} | {<br/>"password" : "password"<br/>}                                                                              | 200                                                                                                                                                                                                                                                                                                                                                                                                                                        |  
 
-- Points
+## Points
 - 수정, 삭제 모두 id는 PathVariable로 전달하고 데이터는 RequestBody를 통해 객체에 담아서 전달
 - 게시글 전부를 조회하는 GET 방식에서는 request할 필요가 없고, 특정 게시글을 조회하는 GET 방식에서는 id 값만 PathVariable로 전달, 나머지 POST, PUT, DELETE 방식에서는 전부 PathVariable을 통한 id값과 RequestBody를 통한 데이터를 담은 객체를 전달
 - HTTP URI(Uniform Resource Identifier)를 통해 자원(Resource)을 명시하고, HTTP Method(POST, GET, PUT, DELETE)를 통해 해당 자원에 대한 CRUD Operation을 적용함으로써 RESTful API 설계
