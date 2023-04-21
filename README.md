@@ -2,7 +2,7 @@
 
 - Use Case
 
-![Use Case.png](Use%20Case.png)
+![Use Case.png](src%2Fmain%2Fresources%2Fstatic%2Fimages%2FUse%20Case.png)
 
 - API Statement
 
